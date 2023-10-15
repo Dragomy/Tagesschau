@@ -16,7 +16,7 @@ for filename in os.listdir(folder_path):
                   regionId = item.get("regionId")
                   geotags = item.get("geotags")
                   
-                #Do something with data:
+                #Do something with gathered items:
                   print(regionId,geotags)
                 
             except json.JSONDecodeError as e:
