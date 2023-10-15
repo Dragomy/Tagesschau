@@ -2,9 +2,13 @@ import os
 import requests
 import datetime
 import json
+import click
 
 
-def get_json_data_from_api_request(folder_name='/home/dragomy/Tagesschau/News'):
+@click.command()
+@click.option('--path', default='/home/dragomy/Tagesschau/News', 
+                        help='Defines the path to save the gathered data.')
+def get_json_data_from_api_request(path):
     current_datetime = datetime.datetime.now()
     # Api Request
     api_url = "https://tagesschau.de/api2/news/"
@@ -14,7 +18,7 @@ def get_json_data_from_api_request(folder_name='/home/dragomy/Tagesschau/News'):
     if response.status_code == 200:
         news_data = response.json()
         json_name = f"News_{current_datetime.strftime('%Y-%m-%d_%H-%M-%S')}.json"
-        with open(os.path.join(folder_name, json_name), "w") as news_file:
+        with open(os.path.join(path, json_name), "w") as news_file:
             news_file.write(json.dumps(news_data))
 
     else:
