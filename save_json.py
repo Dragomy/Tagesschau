@@ -4,7 +4,7 @@ import datetime
 import json
 
 
-def get_json_data_from_api_request(folder_name='News'):
+def get_json_data_from_api_request(folder_name='/home/dragomy/Tagesschau/News'):
     current_datetime = datetime.datetime.now()
     # Api Request
     api_url = "https://tagesschau.de/api2/news/"
@@ -23,4 +23,3 @@ def get_json_data_from_api_request(folder_name='News'):
 
 if __name__ == '__main__':
     get_json_data_from_api_request()
-    

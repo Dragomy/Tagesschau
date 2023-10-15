@@ -1,0 +1,2 @@
+0 0 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
+* 12 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
