@@ -2,9 +2,9 @@ import os
 import json
 import matplotlib.pyplot as plt
 
-folder_path = 'News' 
 
-for filename in os.listdir(folder_path):
+def get_data_from_json(folder_path):
+  for filename in os.listdir(folder_path):
     if filename.endswith('.json'):
         file_path = os.path.join(folder_path, filename)
         with open(file_path, 'r') as json_file:
@@ -23,3 +23,5 @@ for filename in os.listdir(folder_path):
                 print(f"Error loading JSON from {filename}: {e}")
 
 
+if __name__ == '__main__':
+  get_data_from_json('News')
