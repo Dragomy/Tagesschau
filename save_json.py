@@ -20,10 +20,9 @@ def get_json_data_from_api_request(path):
         json_name = f"News_{current_datetime.strftime('%Y-%m-%d_%H-%M-%S')}.json"
         with open(os.path.join(path, json_name), "w") as news_file:
             news_file.write(json.dumps(news_data))
-
     else:
         print(f"Something went wrong")
 
 
 if __name__ == '__main__':
-    get_json_data_from_api_request()
+    get_json_data_from_api_request()  
