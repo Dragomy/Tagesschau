@@ -1,2 +1,9 @@
+#crontab-e
+# Edit this file to introduce tasks to be run by cron.
+#
+# This collects our data twice a day:
+#
+# Run every day at 0:00
 0 0 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
+# Run every day at 12:00
 * 12 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
