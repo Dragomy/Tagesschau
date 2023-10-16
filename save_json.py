@@ -3,7 +3,7 @@ import requests
 import datetime
 import json
 import click
-
+from raspberry_pi_mail import sendmail
 
 @click.command()
 @click.option('--path', default='/home/dragomy/Tagesschau/News', 
@@ -21,8 +21,13 @@ def get_json_data_from_api_request(path):
         with open(os.path.join(path, json_name), "w") as news_file:
             news_file.write(json.dumps(news_data))
     else:
-        print(f"Something went wrong")
+        raise Exception("Wrong Status Code:" + response.status_code)
 
 
 if __name__ == '__main__':
-    get_json_data_from_api_request()  
+    try:
+        get_json_data_from_api_request()  
+    except Exception as e: 
+        subject = "A Problem in your current Pi Project"
+        content =  str(e)
+        sendmail(subject, content)
