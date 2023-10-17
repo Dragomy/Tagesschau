@@ -1,8 +1,0 @@
-Genutzte Seiten etc:
-https://tagesschau.api.bund.dev/
-https://jsonviewer.stack.hu/
-
-Tools/Sprachen:
-IDE: https://code.visualstudio.com/
-https://www.python.org/
-Version python 3.11
