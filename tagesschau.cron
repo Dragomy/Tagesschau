@@ -4,6 +4,8 @@
 # This collects our data twice a day:
 #
 # Run every day at 0:00
-0 0 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
+#0 0 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
 # Run every day at 12:00
-* 12 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
+#0 12 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
+#Runs once evrey hour on a day
+#0 * * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
