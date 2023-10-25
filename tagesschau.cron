@@ -9,3 +9,5 @@
 #0 12 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
 #Runs once evrey hour on a day
 #0 * * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
+#Runs every 5 minutes:
+#*/5 * * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
