@@ -5,7 +5,12 @@
 #
 # Run every day at 0:00
 #0 0 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
+#
 # Run every day at 12:00
 #0 12 * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
-#Runs once evrey hour on a day
-#0 * * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py
+#
+#Runs once every hour on a day
+#0 * * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py 
+#
+#Runs every five minutes (This is whats used in the end)
+#*/5 * * * * /usr/bin/python /home/dragomy/Tagesschau/save_json.py 
