@@ -7,7 +7,7 @@ import gzip
 import os
 
 @click.command()
-@click.option('--path', default='News', help='Defines the path to save the gathered data.')
+@click.option('--path', default='/home/dragomy/Tagesschau/News', help='Defines the path to save the gathered data.')
 def get_json_data_from_api_request(path):
     current_datetime = datetime.datetime.now()
 
