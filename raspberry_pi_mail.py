@@ -1,13 +1,12 @@
 import smtplib
 
-SMTP_SERVER = 'smtp.gmail.com' #(don't change!)
-SMTP_PORT = 587 #(don't change!)
-GMAIL_USERNAME = '' 
-GMAIL_PASSWORD = ''  #RaspberryMail App Passwort
+SMTP_SERVER = 'smtp.gmail.com' 
+SMTP_PORT = 587 
+GMAIL_USERNAME = '' #DO NOT PUSH
+GMAIL_PASSWORD = '' #DO NOT PUSH
 
 
 def sendmail(subject, content, recipient=GMAIL_USERNAME):
-
     headers = ["From: " + GMAIL_USERNAME, "Subject: " + subject, "To: " + recipient,
                 "MIME-Version: 1.0", "Content-Type: text/html"]
     headers = "\r\n".join(headers)
