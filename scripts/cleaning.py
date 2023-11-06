@@ -4,7 +4,7 @@ import pandas as pd
 
 
 #Opens all jsons in the specified folder and packs them into a list for later use.
-def load_and_list_jsons(dataframe, folder_path = './'):
+def load_and_list_jsons(dataframe, folder_path = '/News'):
     list_of_data_frames = []
     for filename in os.listdir(folder_path):
         if filename.endswith('.json'):
@@ -35,7 +35,7 @@ def clean_dataframe(dataframe):
 
 
 # WIP Should display duplicates in a dataframe if two criterias are met!
-def show_duplicated(dataframe, crit1= 'sophoraId' , crit2= 'date')
+def show_duplicated(dataframe, crit1= 'sophoraId' , crit2= 'date'):
     pass
     tmp = dataframe['sophoraId','date']
     dataframe.duplicated
