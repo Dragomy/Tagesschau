@@ -25,10 +25,10 @@ def load_and_list_jsons(dataframe, folder_path = '/News'):
 #Third we filter all left over regionIds (they are now most likely abroad news)
 def clean_dataframe(dataframe):
     
-    dataframe['date'] = pd.to_datetime(tmp_df['date'])
+    dataframe['date'] = pd.to_datetime(dataframe['date'])
     
     tmp_index = dataframe['sophoraId'].str.contains("video")
-    dataframe.loc[tmp_index, 'regionId'] = tmp_df.loc[tmp_index, 'regionId'].fillna(-1)
+    dataframe.loc[tmp_index, 'regionId'] = dataframe.loc[tmp_index, 'regionId'].fillna(-1)
     
     dataframe.regionId = dataframe.regionId.fillna(-2)
     return dataframe
@@ -42,6 +42,5 @@ def show_duplicated(dataframe, crit1= 'sophoraId' , crit2= 'date'):
 
 
 # Special for sorting the Tag category which returns a list of dictionary at a point where only a list is needed
-def clean_tags(line = 'tags'): 
-    return [x['tag'] for x in zeile]
-    
+#def clean_tags(line = 'tags'): 
+#    return [x['tag'] for x in zeile]
