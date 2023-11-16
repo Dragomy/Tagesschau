@@ -10,7 +10,10 @@ import pandas as pd
 
 # Drops collumns i dont know what to do with
 def drop_useless_columns(tmp_df):
-    columns_to_remove = ['updateCheckUrl', 
+    columns_to_remove = ['teaserImage',
+                         'tracking',
+                         'brandingImage',
+                         'updateCheckUrl', 
                          'details', 
                          'detailsweb', 
                          'shareURL', 
@@ -33,6 +36,8 @@ def clean_tags(tmp_df):
 
 # Input your dataframe and it gets completely cleaned
 def clean_all(tmp_df):
-    clean_date(tmp_df)
-    drop_useless_columns(tmp_df)
-    clean_tags(tmp_df)
+    tmp_df = clean_date(tmp_df)
+    tmp_df = drop_useless_columns(tmp_df)
+    tmp_df = clean_tags(tmp_df)
+    return tmp_df
+
