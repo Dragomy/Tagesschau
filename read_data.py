@@ -34,8 +34,9 @@ def data_to_dataframe(folder_path='News'):
         elif filename.endswith('.json.gz'):
             list_of_data_frames.append(load_gzip(file_path))
                 
-    print('Process finished')
-    return pd.concat(list_of_data_frames, ignore_index=True)
+    
+    return pd.concat(list_of_data_frames, ignore_index=True) 
+    
 
 # This is how to use it:
 # df = data_to_dataframe()
