@@ -8,6 +8,7 @@ def load_json(file_path):
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)['news']
         df_temp = pd.DataFrame.from_records(data)
+        print(file_path, end='\r') # This looks cool
         return df_temp
     
 
@@ -16,6 +17,7 @@ def load_gzip(file_path):
     with gzip.open(file_path, 'rt') as gzipped_json_file:
         data = json.load(gzipped_json_file)['news']
         df_temp = pd.DataFrame.from_records(data)
+        print(file_path, end='\r') # This looks cool
         return df_temp
     
 
