@@ -8,6 +8,14 @@ import pandas as pd
 # df_dropped = df.drop_duplicates(subset = 'sophoraId', keep = 'first')
 
 
+# Doppelte Zeilen basierend auf allen Spalten entfernen, außer der ersten Erscheinung
+def remove_duplicate_rows(tmp_df):
+    tmp_df.drop_duplicates(keep='first', inplace=True)
+    tmp_df.reset_index(drop=True, inplace=True)
+    return tmp_df
+    
+    
+
 # Drops collumns i dont know what to do with
 def drop_useless_columns(tmp_df):
     columns_to_remove = ['teaserImage',
@@ -36,6 +44,7 @@ def clean_tags(tmp_df):
 
 # Input your dataframe and it gets completely cleaned
 def clean_all(tmp_df):
+    # tmp_df = remove_duplicate_rows(tmp_df)
     tmp_df = clean_date(tmp_df)
     tmp_df = drop_useless_columns(tmp_df)
     tmp_df = clean_tags(tmp_df)

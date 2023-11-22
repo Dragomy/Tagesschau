@@ -31,3 +31,16 @@ def taglist_no_regions(tmp_df):
     mask = ~taglist_counted.index.isin(to_remove)
     taglist_no_regions = taglist_counted[mask]
     return taglist_no_regions
+
+
+# This function returns a list of all numbers in the 'tags' column
+def numberlist(tmp_df):
+    numberlist = [num for nums_list in df['regionIds'] if isinstance(nums_list, list) for num in nums_list]
+    return numberlist
+
+
+# This function returns a Series with the count of each number in the 'tags' column
+def numberlist_counted(tmp_df):
+    numberlist = [num for nums_list in df['regionIds'] if isinstance(nums_list, list) for num in nums_list]
+    numberlist_counted = pd.Series(numberlist).value_counts()
+    return numberlist_counted
