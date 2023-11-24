@@ -22,15 +22,31 @@ def taglist_no_regions(tmp_df):
     taglist = [tag for tags_list in tmp_df['tags'] for tag in tags_list]
     taglist_counted = pd.Series(taglist).value_counts()
     
-    to_remove = ['Bundesländer','Baden-Württemberg','Bayern','Berlin',
-                      'Brandenburg','Bremen','Hamburg','Hessen',
-                      'Mecklenburg-Vorpommern','Niedersachsen','Nordrhein-Westfalen',
-                      'Rheinland-Pfalz','Saarland','Sachsen','Sachsen-Anhalt',
-                      'Schleswig-Holstein','Thüringen']
+    to_remove = ['Baden-Württemberg','Bayern','Berlin',
+                 'Brandenburg','Bremen','Hamburg','Hessen',
+                 'Mecklenburg-Vorpommern','Niedersachsen','Nordrhein-Westfalen',
+                'Rheinland-Pfalz','Saarland','Sachsen','Sachsen-Anhalt',
+                'Schleswig-Holstein','Thüringen']
     
     mask = ~taglist_counted.index.isin(to_remove)
     taglist_no_regions = taglist_counted[mask]
     return taglist_no_regions
+
+
+def taglist_only_regions(tmp_df):
+    taglist = [tag for tags_list in tmp_df['tags'] for tag in tags_list]
+    taglist_counted = pd.Series(taglist).value_counts()
+    
+    stay = ['Baden-Württemberg','Bayern','Berlin',
+            'Brandenburg','Bremen','Hamburg','Hessen',
+            'Mecklenburg-Vorpommern','Niedersachsen','Nordrhein-Westfalen',
+            'Rheinland-Pfalz','Saarland','Sachsen','Sachsen-Anhalt',
+            'Schleswig-Holstein','Thüringen']
+    
+    # Keep only the tags in the stay list
+    mask = taglist_counted.index.isin(stay)
+    taglist_only_regions = taglist_counted[mask]
+    return taglist_only_regions
 
 
 # This function returns a list of all numbers in the 'tags' column
