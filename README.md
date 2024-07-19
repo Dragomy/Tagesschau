@@ -1,4 +1,4 @@
-# Tagesschau
+# Tagesschau-Mining
 
-Dieses Repository beherbergt ein kleines Freizeitdatenprojekt, das später zu einer Facharbeit erweitert wurde. 
-Das Hauptziel dieser Arbeit bestand darin, einen umfassenden Datensatz der Tagesschau über mehrere Monate zu erstellen. Anschließend erfolgte die Analyse dieses Datensatzes anhand verschiedener Datenpunkte.
+This projects uses the Api of Germanys news "Tagesschau" so I can learn a bit about DataScience.
+It was also used for a High School paper o mine.

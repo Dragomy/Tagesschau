@@ -12,7 +12,7 @@ def get_json_data_from_api_request(path):
     current_datetime = datetime.datetime.now()
 
     # Api Request
-    api_url = "https://tagesschau.de/api2/news/"
+    api_url = "https://www.tagesschau.de/api2u/news/"
     response = requests.get(api_url)
 
     # Save as Gzipped JSON
