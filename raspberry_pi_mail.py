@@ -1,3 +1,6 @@
+# This should be the source but I changed it a bit for my needs.
+# https://raspberrytips.com/python-send-emails-raspberry-pi/
+
 import smtplib
 
 SMTP_SERVER = 'smtp.gmail.com' 
