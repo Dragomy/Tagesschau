@@ -1,6 +1,8 @@
 # ATTENTION: This script is being currently worked on.
 
 from read_data.py import *
+import pandas as pd
+
 
 # All files get converted into a dataframe
 daily_news = data_to_dataframe() 
@@ -61,55 +63,38 @@ def flatten_tracking(df):
 
 
 # Since everything that follows is for both first and last we write a function
-def flatten_known_collumns(df, df_name):
-    geotags = df["sophoraId", "geotags"]
-    f'geotags_{df_name}' = geotags.explode("geotags")
+def flatten_and_save(df, df_name):
+    # Flatten geotags
+    geotags = df[["sophoraId", "geotags"]].copy()
+    geotags_exploded = geotags.explode("geotags")
+    save_dataframe(geotags_exploded, f'geotags_{df_name}')
+
+    # Flatten regionIds
+    regionIds = df[["sophoraId", "regionIds"]].copy()
+    regionIds_exploded = regionIds.explode("regionIds")
+    save_dataframe(regionIds_exploded, f'regionIds_{df_name}')
+
+    # Flatten teaserImage
+    teaserImage = df[["sophoraId", "teaserImage"]].copy()
+    flattened_teaserImage = teaserImage["teaserImage"].apply(flatten_teaserImage)
+    teaserImage_df = pd.DataFrame(flattened_teaserImage.tolist())
+    teaserImage_combined = pd.concat([teaserImage.drop(columns=['teaserImage']), teaserImage_df], axis=1)
+    save_dataframe(teaserImage_combined, f'teaserImage_{df_name}')
+
+    # Flatten tags
+    tags = df[["sophoraId", "tags"]].copy()
+    tags_exploded = tags.explode("tags")
+    tags_exploded["tags"] = tags_exploded["tags"].apply(extract_tag)
+    save_dataframe(tags_exploded, f'tags_{df_name}')
+
+    # Flatten tracking
+    tracking = df[["sophoraId", "tracking"]].copy()
+    tracking_flattened = flatten_tracking(tracking)
+    save_dataframe(tracking_flattened, f'tracking_{df_name}')
+
+def save_dataframe(df, name):
+    file_name = f'{name}.parquet.gzip'
+    df.to_parquet(file_name, "pyarrow", "gzip", index=False)
+    print(f'Saved {file_name}')
     
-    regionIds = df["sophoraId", "regionIds"]
-    f'regionIds_{df_name}' = regionIds.explode("regionIds")
-
-    teaserImage = df["sophoraId", "teaserImage"]
-    flatten_teaserImage = teaserImage["teaserImage"].apply(flatten_teaserImage)
-    teaserImage_df = pd.DataFrame(flatten_teaser_images.tolist())
-    teaserImage = pd.concat([links.drop(columns=['teaserImage']), flattened_df], axis=1)
-    f'teaserImage_{df_name}' = teaserImage
-
-    tags = df["sophoraId", "tags"]
-    tags = tags.explode('tags')
-    tags['tags'] = tags['tags'].apply(extract_tag)
-    f'tags_{df_name}' = tags
-
-    tracking = df["sophoraId", "tracking"]
-    tracking = flatten_tracking(df)  
-    f'tracking_{df_name}' = tracking
-
-
-flatten_known_collumns(first,"first")
-
-    
-    
-
-
-     
-
-
-
-
-
-
-
-
-
-# If evrery collumn is in the list 
-# --> Split into daylie_news_first and daylie_news_last
-# --> flatten and save them as parquet 
-# You should now get:
-# daylie_news_first.parquet
-# daylie_news_last.parquet
-# {non_flat_collumn_name}_first.parquet
-# {non_flat_collumn_name}_last.parquet
-
 # Before appending them to any older files check for conflicts
-
-
-
